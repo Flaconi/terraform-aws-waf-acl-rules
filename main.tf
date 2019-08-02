@@ -73,7 +73,7 @@ resource "aws_waf_web_acl" "this" {
     for_each = { for rule in var.waf_rules : rule.name => rule if rule.enabled }
     content {
       action {
-        type = lookup(rules.value, "action_type", "BLOCK")
+        type = lookup(rules.value, "action_type", "ALLOW")
       }
 
       priority = rules.value.priority
