@@ -48,7 +48,7 @@ resource "aws_waf_rule" "this" {
     }
   }
 
-  # IPSET Rules
+  # ByteMatch Rules
   dynamic predicates {
     for_each = (length(each.value.byte_match_tuples) > 0 ? [true] : [])
     content {

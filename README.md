@@ -1,18 +1,18 @@
-# Microservice Boilerplate
+# WAF ACL Rules
 
 [![Build Status](https://travis-ci.com/Flaconi/terraform-aws-waf-acl-rules.svg?branch=master)](https://travis-ci.com/Flaconi/terraform-aws-waf-acl-rules)
 [![Tag](https://img.shields.io/github/tag/Flaconi/terraform-aws-waf-acl-rules.svg)](https://github.com/Flaconi/terraform-aws-waf-acl-rules/releases)
 <!-- [![Terraform](https://img.shields.io/badge/Terraform--registry-aws--iam--roles-brightgreen.svg)](https://registry.terraform.io/modules/Flaconi/waf-acl-rules/aws/) -->
 [![License](https://img.shields.io/badge/license-MIT-blue.svg)](https://opensource.org/licenses/MIT)
 
-This Terraform module can create typical resources needed for most a WAF ACL
+This Terraform module can create typical resources needed for using WAF
 
 ## Usage
 
 ### WAF ACL
 
 ```hcl
-module "waf-acl-rules" {
+module "waf_acl_rules" {
   source = "github.com/flaconi/terraform-aws-waf-acl-rules"
   waf_acl_name           = "name"
   waf_acl_default_action = "BLOCK"
