@@ -54,7 +54,7 @@ resource "aws_waf_rule" "this" {
     content {
       data_id = aws_waf_byte_match_set.this[each.key].id
       negated = false
-      type    = "IPMatch"
+      type    = "ByteMatch"
     }
   }
 }
