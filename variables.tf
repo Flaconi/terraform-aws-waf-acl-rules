@@ -1,6 +1,6 @@
 variable "waf_rules" {
   description = "Waf Rules"
-  default = []
+  default     = []
   type = list(object({
     name              = string
     enabled           = bool
