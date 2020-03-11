@@ -7,6 +7,7 @@ variable "waf_rules" {
     priority          = string
     ranges            = list(map(string))
     byte_match_tuples = list(map(string))
+    uri_match         = list(map(string))
   }))
 }
 

@@ -31,6 +31,24 @@ resource "aws_waf_byte_match_set" "this" {
   }
 }
 
+# For every rule with ranges set, create this rule with dynamic ip_set_descriptors
+resource "aws_waf_byte_match_set" "uri" {
+  for_each = { for rule in var.waf_rules : rule.name => rule if length(rule.uri_match) > 0 }
+  name     = each.key
+
+  dynamic byte_match_tuples {
+    for_each = concat([], each.value.uri_match)
+    content {
+      text_transformation   = lookup(byte_match_tuples.value, "text_transformation", "NONE")
+      positional_constraint = lookup(byte_match_tuples.value, "positional_constraint", "STARTS_WITH")
+      target_string         = lookup(byte_match_tuples.value, "target_string")
+      field_to_match {
+        type = "URI"
+        data = null
+      }
+    }
+  }
+}
 
 # For every rule create a `aws_waf_rule` and link it to either an `aws_waf_ipset` or an `aws_waf_byte_match_set`
 resource "aws_waf_rule" "this" {
@@ -53,6 +71,16 @@ resource "aws_waf_rule" "this" {
     for_each = (length(each.value.byte_match_tuples) > 0 ? [true] : [])
     content {
       data_id = aws_waf_byte_match_set.this[each.key].id
+      negated = false
+      type    = "ByteMatch"
+    }
+  }
+
+  # URI Match Rules
+  dynamic predicates {
+    for_each = (length(each.value.uri_match) > 0 ? [true] : [])
+    content {
+      data_id = aws_waf_byte_match_set.uri[each.key].id
       negated = false
       type    = "ByteMatch"
     }
