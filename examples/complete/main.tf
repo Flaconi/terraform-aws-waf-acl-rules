@@ -12,7 +12,7 @@ locals {
       uri_match = []
       ranges = [
         {
-          "value" = "127.0.0.1/32"
+          value = "127.0.0.1/32"
         },
       ]
     }, {
@@ -23,10 +23,10 @@ locals {
       uri_match = []
       ranges = [
         {
-          "value" = "8.8.4.4/32"
+          value = "8.8.4.4/32"
         },
         {
-          "value" = "8.8.8.8/32"
+          value = "8.8.8.8/32"
         },
       ]
     }, {
