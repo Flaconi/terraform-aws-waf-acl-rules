@@ -7,6 +7,7 @@ locals {
     {
       name              = "name"
       priority          = "1"
+      negated           = false
       enabled           = false
       byte_match_tuples = []
       uri_match = []
@@ -18,6 +19,7 @@ locals {
     }, {
       name              = "blockgoogle"
       priority          = "2"
+      negated           = false
       enabled           = true
       byte_match_tuples = []
       uri_match = []
@@ -32,6 +34,7 @@ locals {
     }, {
       name     = "allowheaderx"
       priority = "3"
+      negated  = false
       enabled  = true
       ranges   = []
       uri_match = []
@@ -44,6 +47,7 @@ locals {
     }, {
       name     = "allowPathWithToken"
       priority = "4"
+      negated  = false
       enabled  = true
       ranges   = []
       uri_match = [
