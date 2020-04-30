@@ -61,7 +61,7 @@ resource "aws_waf_rule" "this" {
     for_each = (length(each.value.ranges) > 0 ? [true] : [])
     content {
       data_id = aws_waf_ipset.this[each.key].id
-      negated = lookup(each.value, "negated", false)
+      negated = each.value["negated"]
       type    = "IPMatch"
     }
   }
@@ -71,7 +71,7 @@ resource "aws_waf_rule" "this" {
     for_each = (length(each.value.byte_match_tuples) > 0 ? [true] : [])
     content {
       data_id = aws_waf_byte_match_set.this[each.key].id
-      negated = lookup(each.value, "negated", false)
+      negated = each.value["negated"]
       type    = "ByteMatch"
     }
   }
