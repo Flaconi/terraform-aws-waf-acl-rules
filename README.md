@@ -22,6 +22,7 @@ module "waf_acl_rules" {
     priority          = "1"
     enabled           = false
     negated           = false
+    action_type       = "ALLOW"
     byte_match_tuples = []
     ranges = [
       {
@@ -33,6 +34,7 @@ module "waf_acl_rules" {
     priority          = "2"
     enabled           = true
     negated           = true
+    action_type       = "BLOCK"
     byte_match_tuples = []
     ranges = [
       {
