@@ -21,6 +21,7 @@ module "waf_acl_rules" {
     name              = "name"
     priority          = "1"
     enabled           = false
+    negated           = false
     byte_match_tuples = []
     ranges = [
       {
@@ -31,6 +32,7 @@ module "waf_acl_rules" {
     name              = "blockgoogle"
     priority          = "2"
     enabled           = true
+    negated           = true
     byte_match_tuples = []
     ranges = [
       {
@@ -45,6 +47,7 @@ module "waf_acl_rules" {
       name     = "allowheaderx"
       priority = "3"
       enabled  = true
+      negated  = false
       ranges   = []
       byte_match_tuples = [{
         field_to_match_data = "header-X",
