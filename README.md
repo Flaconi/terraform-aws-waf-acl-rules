@@ -47,6 +47,7 @@ module "waf_acl_rules" {
       name     = "allowheaderx"
       priority = "3"
       enabled  = true
+      negated  = false
       ranges   = []
       byte_match_tuples = [{
         field_to_match_data = "header-X",
