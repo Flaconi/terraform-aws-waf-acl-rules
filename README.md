@@ -21,6 +21,7 @@ module "waf_acl_rules" {
     name              = "name"
     priority          = "1"
     enabled           = false
+    negated           = false
     byte_match_tuples = []
     ranges = [
       {
@@ -31,6 +32,7 @@ module "waf_acl_rules" {
     name              = "blockgoogle"
     priority          = "2"
     enabled           = true
+    negated           = true
     byte_match_tuples = []
     ranges = [
       {
