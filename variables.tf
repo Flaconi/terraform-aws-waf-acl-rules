@@ -6,6 +6,7 @@ variable "waf_rules" {
     enabled           = bool
     priority          = string
     negated           = bool
+    action_type       = string
     ranges            = list(map(string))
     byte_match_tuples = list(map(string))
     uri_match         = list(map(string))

@@ -22,6 +22,7 @@ module "waf_acl_rules" {
     priority          = "1"
     enabled           = false
     negated           = false
+    action_type       = "ALLOW"
     byte_match_tuples = []
     ranges = [
       {
@@ -33,6 +34,7 @@ module "waf_acl_rules" {
     priority          = "2"
     enabled           = true
     negated           = true
+    action_type       = "BLOCK"
     byte_match_tuples = []
     ranges = [
       {
@@ -44,11 +46,12 @@ module "waf_acl_rules" {
     ]
     }
     , {
-      name     = "allowheaderx"
-      priority = "3"
-      enabled  = true
-      negated  = false
-      ranges   = []
+      name         = "allowheaderx"
+      priority     = "3"
+      enabled      = true
+      negated      = false
+      action_type  = "ALLOW"
+      ranges       = []
       byte_match_tuples = [{
         field_to_match_data = "header-X",
         target_string       = "containsthis"

@@ -9,6 +9,7 @@ locals {
       priority          = "1"
       negated           = false
       enabled           = false
+      action_type       = "ALLOW"
       byte_match_tuples = []
       uri_match = []
       ranges = [
@@ -21,6 +22,7 @@ locals {
       priority          = "2"
       negated           = false
       enabled           = true
+      action_type       = "ALLOW"
       byte_match_tuples = []
       uri_match = []
       ranges = [
@@ -32,12 +34,13 @@ locals {
         },
       ]
     }, {
-      name     = "allowheaderx"
-      priority = "3"
-      negated  = false
-      enabled  = true
-      ranges   = []
-      uri_match = []
+      name         = "allowheaderx"
+      priority     = "3"
+      negated      = false
+      enabled      = true
+      action_type  = "ALLOW"
+      ranges       = []
+      uri_match    = []
       byte_match_tuples = [
         {
           field_to_match_data = "header-X",
@@ -45,11 +48,12 @@ locals {
         },
       ]
     }, {
-      name     = "allowPathWithToken"
-      priority = "4"
-      negated  = false
-      enabled  = true
-      ranges   = []
+      name         = "allowPathWithToken"
+      priority     = "4"
+      negated      = false
+      enabled      = true
+      action_type  = "ALLOW"
+      ranges       = []
       uri_match = [
         {
           target_string = "/your/uri/"
