@@ -1,0 +1,19 @@
+---
+
+###
+### Run init + validate for all examples
+###
+
+name: test
+on: [pull_request]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Run tests
+        run: |
+          make test
