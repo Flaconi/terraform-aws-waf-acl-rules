@@ -9,6 +9,7 @@ on: [pull_request]
 
 jobs:
   test:
+    name: Test
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
