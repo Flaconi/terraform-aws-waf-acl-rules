@@ -62,19 +62,46 @@ module "waf_acl_rules" {
 ```
 
 <!-- BEGINNING OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
+## Requirements
+
+| Name | Version |
+|------|---------|
+| <a name="requirement_terraform"></a> [terraform](#requirement\_terraform) | >= 0.13 |
+| <a name="requirement_aws"></a> [aws](#requirement\_aws) | >= 4 |
+
+## Providers
+
+| Name | Version |
+|------|---------|
+| <a name="provider_aws"></a> [aws](#provider\_aws) | >= 4 |
+
+## Modules
+
+No modules.
+
+## Resources
+
+| Name | Type |
+|------|------|
+| [aws_waf_byte_match_set.this](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/waf_byte_match_set) | resource |
+| [aws_waf_byte_match_set.uri](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/waf_byte_match_set) | resource |
+| [aws_waf_ipset.this](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/waf_ipset) | resource |
+| [aws_waf_rule.this](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/waf_rule) | resource |
+| [aws_waf_web_acl.this](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/waf_web_acl) | resource |
+
 ## Inputs
 
 | Name | Description | Type | Default | Required |
-|------|-------------|:----:|:-----:|:-----:|
-| waf\_acl\_default\_action | WAF Default Action | string | n/a | yes |
-| waf\_acl\_name | Waf Rules | string | n/a | yes |
-| waf\_rules | Waf Rules | object | `[]` | no |
+|------|-------------|------|---------|:--------:|
+| <a name="input_waf_rules"></a> [waf\_rules](#input\_waf\_rules) | Waf Rules | <pre>list(object({<br>    name              = string<br>    enabled           = bool<br>    priority          = string<br>    negated           = bool<br>    action_type       = string<br>    ranges            = list(map(string))<br>    byte_match_tuples = list(map(string))<br>    uri_match         = list(map(string))<br>  }))</pre> | `[]` | no |
+| <a name="input_waf_acl_name"></a> [waf\_acl\_name](#input\_waf\_acl\_name) | Waf Rules | `string` | n/a | yes |
+| <a name="input_waf_acl_default_action"></a> [waf\_acl\_default\_action](#input\_waf\_acl\_default\_action) | WAF Default Action | `string` | n/a | yes |
 
 ## Outputs
 
 | Name | Description |
 |------|-------------|
-| this\_aws\_waf\_acl\_id | waf acl id |
+| <a name="output_this_aws_waf_acl_id"></a> [this\_aws\_waf\_acl\_id](#output\_this\_aws\_waf\_acl\_id) | waf acl id |
 
 <!-- END OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
 
